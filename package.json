@@ -2,11 +2,7 @@
   "name": "react-shallow-update",
   "version": "1.0.0",
   "description": "Make react shouldComponentUpdate check if props/state/context are shallowly changed by default",
-  "main": "lib/react-shallow-update.js",
-  "scripts": {
-    "build": "babel src -d lib",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "src/react-shallow-update.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ngasull/react-shallow-update.git"
@@ -24,9 +20,5 @@
   "bugs": {
     "url": "https://github.com/ngasull/react-shallow-update/issues"
   },
-  "homepage": "https://github.com/ngasull/react-shallow-update#readme",
-  "devDependencies": {
-    "babel-cli": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0"
-  }
+  "homepage": "https://github.com/ngasull/react-shallow-update#readme"
 }

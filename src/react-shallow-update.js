@@ -1,12 +1,19 @@
-merge = (objs) => extend({}, objs)
+"use strict"
+
+function merge(objs) {
+  return extend({}, objs)
+}
 
 function extend(dest, objs) {
   if (!objs.length) {
     return dest
   }
 
-  const [obj, ...rest] = objs
-  obj.getOwnPropertyNames().map((prop) => o[prop] = obj[prop])
+  var obj = objs[0]
+  var rest = objs.slice(1)
+  obj.getOwnPropertyNames().map(function (prop) {
+    return o[prop] = obj[prop]
+  })
   return extend(dest, rest)
 }
 
@@ -19,14 +26,14 @@ function shallowEqual(var1, var2) {
 }
 
 function objectShallowEqual(obj1, obj2) {
-  const props1 = obj1.getOwnPropertyNames()
-  const props2 = obj2.getOwnPropertyNames()
+  var props1 = obj1.getOwnPropertyNames()
+  var props2 = obj2.getOwnPropertyNames()
 
   if (props1.length !== props2.length) {
     return false
   }
 
-  for (let i = 0; i < props1.length; i++) {
+  for (var i = 0; i < props1.length; i++) {
     if (props1[i] !== props2[i]) {
       return false
     }
@@ -49,8 +56,10 @@ function makeReactExtensions() {
   }
 }
 
-export const monkeyPatchReact = (React) =>
-  extend([React.Component.prototype, makeReactExtensions()])
+exports.monkeyPatchReact = function monkeyPatchReact(React) {
+  return extend([React.Component.prototype, makeReactExtensions()])
+}
 
-export const wrapReact = (React) =>
-  merge([React.Component.prototype, makeReactExtensions()])
+exports.wrapReact = function wrapReact(React) {
+  return merge([React.Component.prototype, makeReactExtensions()])
+}
